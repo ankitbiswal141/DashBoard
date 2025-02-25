@@ -29,10 +29,6 @@ const Dashboard = () => {
     <div className="dashboard-container container">
       <div className="dashboard-content container">
         <h1 className="dashboard-title h1">Welcome, {username}!</h1>
-        <p className="dashboard-info">This is your dashboard. You can manage your account here.</p>
-        <button className="btn btn-primary btn-logout" onClick={handleLogout}>
-          Logout
-        </button>
       </div>
     </div>
   );
