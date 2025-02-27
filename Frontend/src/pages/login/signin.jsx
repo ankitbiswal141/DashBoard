@@ -1,17 +1,31 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './SignIn.module.css';
-import Field from '../../components/field';
+import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 
-function SignIn() {
+const SignIn = () => {
+  const [username, setUsername] = useState('');
+  const navigate = useNavigate();
+
+  const handleSignIn = () => {
+    localStorage.setItem('username', username);
+    localStorage.setItem('isRegistered', 'true');
+    navigate('/');
+  };
+
   return (
-    <div className="sign-in-container">
-      <div className="sign-in-content">
-        <p className="h1 head">Sign In</p>
-        <Field textField="Name"/>
-        <Field textField="Password"/>
-      </div>
+    <div>
+      <h1>Sign In</h1>
+      <input
+        type="text"
+        placeholder="Username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
+      <FieldButton buttonName="Sign In"/>
+      <p>
+        Don't have an account? <Link to="/sign-up">Sign Up</Link>
+      </p>
     </div>
   );
-}
+};
 
 export default SignIn;

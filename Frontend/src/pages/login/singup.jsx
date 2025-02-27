@@ -1,16 +1,35 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
-import './SignUp.module.css';
-function SignUp(){
-  return (
-    <div className="sign-up-container container">
-          <div className="sign-up-content">
-            <p className="h1 head">Sign Up</p>
-            <Field textField="Name"/>
-            <Field textField="Email"/>
-            <Field textField="Password"/>
-          </div>
-        </div>
-  )
-}
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export default SignUp
+const SignUp = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+
+  const handleSignUp = () => {
+    localStorage.setItem('username', username);
+    localStorage.setItem('isRegistered', 'true');
+    navigate('/');
+  };
+
+  return (
+    <div>
+      <h1>Sign Up</h1>
+      <input
+        type="text"
+        placeholder="Username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <FieldButton buttonName="Sign Up"/>
+    </div>
+  );
+};
+
+export default SignUp;

@@ -1,11 +1,17 @@
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import SignIn from './pages/login/signin'
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Dashboard from './pages/board/DashBoard';
+import SignIn from './pages/login/signin';
 
 function App() {
   return (
-    <SignIn/>
-  )
+    <Router>
+      <Routes>
+        <Route path="/sign-in" element={<SignIn />} />
+        <Route path="/" element={<Dashboard />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
